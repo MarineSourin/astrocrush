@@ -290,6 +290,7 @@ famous_users_photos = [
 #   fake_users_photos << URI.open('https://thispersondoesnotexist.com/image')
 # end
 
+
 photos = team_users_photos #+ famous_users_photos #+ fake_users_photos
 
 # <--- Create Users --->
