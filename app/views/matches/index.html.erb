@@ -69,14 +69,11 @@
     <% end  %>
   </div>
 
-  <div class="messages-container">
-    <h3>
-      Messages
-    </h3>
+  <div class="messages-container" data-controller="match">
+    <h3>Messages</h3>
 
     <% @oldmatches.each do |match| %>
       <div class="message-card d-flex justify-content-between">
-
         <div class="cardplustext">
           <div class="d-flex">
             <% if match.mate_for(current_user).photos.any?  %>
@@ -93,8 +90,10 @@
           </div>
         </div>
 
-        <div>
-          <%= link_to "", match_path(match), method: :delete, class:"fas fa-trash" %>
+        <div data-action="click->match#displayDropdown" class="fas fa-ellipsis-v text-secondary" >
+          <div class="delete-match d-none" data-match-target="trash">
+            <%= link_to "", match_path(match), method: :delete, class:"fas fa-trash delete-match" %>
+          </div>
         </div>
       </div>
     <% end %>

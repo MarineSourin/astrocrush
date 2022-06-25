@@ -111,3 +111,11 @@
 .navigation ul li:nth-child(4).active ~ .indicator {
   transform: translateX(calc(70px * 3));
 }
+
+.rednotif {
+  border-radius: 50%;
+  background-color:red;
+  width: 8px;
+  height: 8px;
+  position: absolute;
+}

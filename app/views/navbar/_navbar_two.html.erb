@@ -20,7 +20,10 @@
         <a href="<%= matches_path %>">
         <span class="icon">
           <ion-icon name="chatbubble-ellipses"></ion-icon>
-
+          <%# <% while @newmatches.count >= 1 %>
+            <%# <div class="rednotif"></div> %>
+            <%= @newmatches %>
+          <%# <% end %>
         </span>
         </a>
       </li>
