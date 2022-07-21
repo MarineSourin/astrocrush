@@ -42,6 +42,8 @@ gem 'rest-client'
 # city-state is a very simple ruby gem to get a list of states in a country.
 # Also, you can get a list of cities in a state, and a list of all countries of the world.
 gem 'city-state'
+gem 'countries'
+gem 'country_select'
 
 group :development, :test do
   gem 'pry-byebug'

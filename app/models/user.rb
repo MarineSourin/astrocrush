@@ -5,8 +5,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  validates_confirmation_of :password
 
   has_many_attached :photos
+  accepts_nested_attributes_for :photos
+
   has_many :matches, dependent: :destroy
   has_many :messages, dependent: :destroy
   # has_many :chatrooms, ->(user) {
@@ -23,8 +26,9 @@ class User < ApplicationRecord
   # validates_date :date_of_birth, :after => Proc.new { Date.today }
   validates :birth_hour, presence: true
   validates :birth_location, presence: true
+  validates :birth_country, presence: true
   validates :gender, presence: true
-  validates :looking_for, presence: true
+  # validates :looking_for, presence: true
   # validate :user_is_adult
   validates_length_of :description, maximum: 500
     # private

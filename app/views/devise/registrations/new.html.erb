@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container pb-5">
   <div class="row mt-5">
     <div class="col-12 col-sm-8 col-md-4 offset-sm-2 offset-md-4">
       <h2>Sign up</h2>
@@ -13,17 +13,21 @@
                       input_html: { autocomplete: "new-password" } %>
           <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
           <%= f.input :username, required: true %>
-          <%= f.input :description, required: false %>
-          <%= f.select :hobbies, required: false %>
-          <%= f.file_field :photos, as: :file, multiple: true, required: false %> 
+          <%# <%= f.input :description, required: false %>
+          <%# <%= f.select :hobbies, required: false %>
+          <%= f.file_field :photos, as: :file, multiple: true %>
           <%= f.input :birth_date, as: :date, start_year: Date.today.year, end_year: Date.today.year - 90, required: true %>
           <%= f.input :birth_hour, required: true %>
           <%= f.input :birth_location, required: true %>
-          <%= f.select :gender, required: true %>
-          <%= f.select :looking_for, required: true %>
+          <%= f.country_select :birth_country %>
+          <div class="d-flex justify-content-between mx-5">
+            <%= f.input :gender, as: :radio_buttons, collection: [['2', 'female'], ['1', 'male']], label_method: :second, value_method: :first, required: true %>
+            <%= f.input :looking_for, as: :radio_buttons, collection: [['1', 'male'], ['2', 'female']], label_method: :second, value_method: :first, required: true %>
+          </div>
+
         </div>
 
-        <div class="form-actions">
+        <div class="form-actions d-flex flex-column">
           <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
         </div>
       <% end %>

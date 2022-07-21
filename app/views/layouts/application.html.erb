@@ -8,6 +8,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!-- Splashscreen for IOS need this line-->
+    <link rel="apple-touch-startup-image" />
+    <link rel="apple-touch-startup-image" href="app/assets/images/splashscreen.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+
+
     <!-- Facebook Open Graph data -->
     <meta property="og:title" content="<%= meta_title %>" />
     <meta property="og:type" content="website" />
@@ -58,10 +63,12 @@
   <body class= "<%= params[:controller] == 'users' && params[:action] == 'astroboard' ? "background-violet" : "background-white" %>">
     <%# <%= render "shared/flashes" %>
     <%= yield %>
-    <% if params[:controller] == "users" && params[:action] == "index"%>
-      <%= render "navbar/navbar_two" %>
-    <% else %>
-      <%= render "navbar/navbar_screens" %>
+    <% if user_signed_in? %>
+      <% if params[:controller] == "users" && params[:action] == "index"%>
+        <%= render "navbar/navbar_two" %>
+      <% else %>
+        <%= render "navbar/navbar_screens" %>
+      <% end %>
     <% end %>
     <%#= params[:controller] == "users" && params[:action] == "index" ? render "navbar/navbar" : render "navbar/navbar_two"%>
   </body>
